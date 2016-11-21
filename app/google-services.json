@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "494672838581",
+    "firebase_url": "https://lazychat-11ce7.firebaseio.com",
+    "project_id": "lazychat-11ce7",
+    "storage_bucket": "lazychat-11ce7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494672838581:android:cf4ad97155137f9b",
+        "android_client_info": {
+          "package_name": "com.example.dalbo.lazychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494672838581-g6tt9v438gqbh6pnudn2trqp7mpaomc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dalbo.lazychat",
+            "certificate_hash": "A71D7A68DF6BB7A6A7C64CC47F2AFE0241E1799D"
+          }
+        },
+        {
+          "client_id": "494672838581-068bmlkhqhnkhkddk68palhlvl0fi4ar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq6iLx0ZDkVVWZi4IMDqhHC4aS0agXLLg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494672838581-068bmlkhqhnkhkddk68palhlvl0fi4ar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Masuk tersebih dahulu"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <EditText
+
+            android:id="@+id/iemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="Email"/>
+
+        <EditText
+            android:id="@+id/ipassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iemail"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Password"
+            />
+
+        <Button
+            android:id="@+id/blogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ipassword"
+            android:text="Login" />
+        <TextView
+            android:id="@+id/oregisterLink"
+            android:layout_below="@id/blogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atau daftar terlebih dahulu?"
+            />
+    </RelativeLayout>
+</RelativeLayout>

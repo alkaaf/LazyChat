@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/inewroomname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama room" />
+
+        <EditText
+            android:id="@+id/inewroomdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inewroomname"
+            android:hint="Deskripsi" />
+
+        <EditText
+            android:id="@+id/iexpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/inewroomdesc"
+            android:inputType="none" />
+
+        <Button
+            android:id="@+id/bcreateroom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iexpdate"
+            android:text="Buat room" />
+    </RelativeLayout>
+
+</RelativeLayout>
