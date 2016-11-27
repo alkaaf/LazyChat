@@ -44,4 +44,13 @@ public class Config {
         return sp.getString("token",null);
 
     }
+
+    public static void setEmail(String email){
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("email",email);
+        editor.apply();
+    }
+    public static String getEmail(){
+        return sp.getString("email",null);
+    }
 }

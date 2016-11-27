@@ -10,14 +10,16 @@ import java.util.Map;
 public class ChatListModel {
     String nick, msg;
     String time;
+    String email;
 
     public ChatListModel() {
     }
 
-    public ChatListModel(String nick, String msg, String time) {
+    public ChatListModel(String nick, String msg, String time, String email) {
         this.nick = nick;
         this.msg = msg;
         this.time = time;
+        this.email = email;
     }
 
     public String getNick() {
@@ -49,6 +51,15 @@ public class ChatListModel {
         temp.put("nick",this.nick);
         temp.put("msg",this.msg);
         temp.put("time",this.time);
+        temp.put("email",this.email);
         return temp;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -25,7 +25,7 @@ public class BaseActivity extends AppCompatActivity {
     Context c;
     SearchView searchView;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
+        Config.prefInit(this);
         super.onCreate(savedInstanceState);
         c = this;
         auth = FirebaseAuth.getInstance();
@@ -35,6 +35,7 @@ public class BaseActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
 //                    Config.setToken(user.getUid());
+                    Config.setEmail(user.getEmail());
                 } else {
                     startActivity(new Intent(c,LoginActivity.class));
                     finish();

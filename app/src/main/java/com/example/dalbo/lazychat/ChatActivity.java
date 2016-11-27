@@ -96,7 +96,7 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Config.prefInit(ChatActivity.this);
-                ChatListModel model = new ChatListModel(Config.getNick(),iMsg.getText().toString(),Config.getNowDate());
+                ChatListModel model = new ChatListModel(Config.getNick(),iMsg.getText().toString(),Config.getNowDate(),Config.getEmail());
                 dbChatRef.push().setValue(model.toMap());
                 iMsg.setText("");
                 iMsg.requestFocus();

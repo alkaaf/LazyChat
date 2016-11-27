@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.dalbo.lazychat.Config;
 import com.example.dalbo.lazychat.Model.ChatListModel;
 import com.example.dalbo.lazychat.R;
 
@@ -19,6 +20,9 @@ import java.util.List;
 public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.viewHolder> {
     List<ChatListModel> data;
 
+    static int TYPE_OWN = 0;
+    static int TYPE_FOE = 1;
+
     public ChatListAdapter() {
         data = new ArrayList<>();
     }
@@ -30,7 +34,12 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.viewHo
 
     @Override
     public ChatListAdapter.viewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_chatlist, parent, false);
+        View v = null;
+        if(viewType == TYPE_OWN){
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_chatlist_own, parent, false);
+        } else if (viewType == TYPE_FOE){
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_chatlist_foe, parent, false);
+        }
         return new viewHolder(v);
     }
 
@@ -44,6 +53,14 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.viewHo
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+//        return super.getItemViewType(position);
+        if (data.get(position).getEmail().equals(Config.getEmail())) {
+            return TYPE_OWN;
+        } else return TYPE_FOE;
     }
 
     class viewHolder extends RecyclerView.ViewHolder {
