@@ -3,22 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    android:id="@+id/trigger"
-    >
+    android:id="@+id/trigger" >
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_forum_black_24dp"
+        android:id="@+id/roomsThumb" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/oroomname"
+        android:layout_toRightOf="@+id/roomsThumb"
         android:textStyle="bold"
-        android:text="Room Title"
-        />
+        android:textSize="15dp"
+        android:text="@string/text_room_title"
+        android:id="@+id/oroomname" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/roomsThumb"
         android:id="@+id/oroomdesc"
         android:layout_below="@id/oroomname"
-        android:text="This is the room description"
-        />
+        android:text="@string/text_room_description" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

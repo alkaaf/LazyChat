@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">LazyChat</string>
     <string name="action_settings">Settings</string>
+
+    <!-- New Chatroom Dialog -->
+    <string name="dialog_title">Create New Room</string>
+    <string name="hint_nama_room">Room\'s Name</string>
+    <string name="hint_description_room">Description</string>
+    <string name="hint_room_expiration">Expire Date</string>s
+    <string name="text_button">Create Room</string>
+
+    <!-- Chat Room List -->
+    <string name="text_room_title">Room\'s Title</string>
+    <string name="text_room_description">Room\'s Descriptions</string>
+    <string name="text_room_expiry">Room\s Expiry Date</string>
 </resources>
