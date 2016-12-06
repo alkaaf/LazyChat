@@ -6,7 +6,7 @@
     <string name="dialog_title">Create New Room</string>
     <string name="hint_nama_room">Room\'s Name</string>
     <string name="hint_description_room">Description</string>
-    <string name="hint_room_expiration">Expire Date</string>s
+    <string name="hint_room_expiration">Expire Date</string>
     <string name="text_button">Create Room</string>
 
     <!-- Chat Room List -->
