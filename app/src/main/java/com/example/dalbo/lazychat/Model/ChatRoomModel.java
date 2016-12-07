@@ -10,13 +10,13 @@ import java.util.Map;
 public class ChatRoomModel {
     String key;
     String roomname, roomdesc;
-    String expdate;
+    long expdate;
     String expired;
 
     public ChatRoomModel() {
     }
 
-    public ChatRoomModel(String roomname, String roomdesc, String expdate, String expired) {
+    public ChatRoomModel(String roomname, String roomdesc, long expdate, String expired) {
 
         this.roomname = roomname;
         this.roomdesc = roomdesc;
@@ -48,11 +48,11 @@ public class ChatRoomModel {
         this.roomdesc = roomdesc;
     }
 
-    public String getExpdate() {
+    public long getExpdate() {
         return expdate;
     }
 
-    public void setExpdate(String expdate) {
+    public void setExpdate(long expdate) {
         this.expdate = expdate;
     }
 
@@ -68,7 +68,7 @@ public class ChatRoomModel {
         Map<String, String> temp = new HashMap<>();
         temp.put("roomname",roomname);
         temp.put("roomdesc",roomdesc);
-        temp.put("expdate",expdate);
+        temp.put("expdate",Long.toString(expdate));
         temp.put("expired",expired);
         return temp;
     }

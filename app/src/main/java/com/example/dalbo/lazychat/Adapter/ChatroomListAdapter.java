@@ -16,7 +16,9 @@ import com.example.dalbo.lazychat.Model.ChatRoomModel;
 import com.example.dalbo.lazychat.R;
 import com.example.dalbo.lazychat.SettingActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,16 +50,7 @@ public class ChatroomListAdapter extends RecyclerView.Adapter<ChatroomListAdapte
     public void onBindViewHolder(ChatroomListAdapter.viewHolder holder, int position) {
         holder.oRoomName.setText(data.get(position).getRoomname());
         holder.oRoomDesc.setText(data.get(position).getRoomdesc());
-        holder.oRoomExp.setText(data.get(position).getExpdate());
-        final String key = data.get(position).getKey();
-        holder.trigger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent chat = new Intent(context,ChatActivity.class);
-                chat.putExtra("key",key);
-                activity.startActivity(chat);
-            }
-        });
+        holder.oRoomExp.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date(data.get(position).getExpdate())));
     }
 
     @Override
@@ -73,6 +66,15 @@ public class ChatroomListAdapter extends RecyclerView.Adapter<ChatroomListAdapte
             oRoomDesc = (TextView)itemView.findViewById(R.id.oroomdesc);
             oRoomExp = (TextView)itemView.findViewById(R.id.oroomexp);
             trigger = (RelativeLayout)itemView.findViewById(R.id.trigger);
+            trigger.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent chat = new Intent(context,ChatActivity.class);
+                    String key = data.get(getAdapterPosition()).getKey();
+                    chat.putExtra("key",key);
+                    activity.startActivity(chat);
+                }
+            });
         }
     }
 }

@@ -28,6 +28,10 @@ public class CreateRoom extends Dialog {
     Button bCreate;
     DatabaseReference dbRef;
 
+    Calendar calendar;
+    Calendar calendarConverter;
+    DatePickerDialog dpd;
+
     public CreateRoom(Context context) {
         super(context);
     }
@@ -42,17 +46,24 @@ public class CreateRoom extends Dialog {
         expDate = (EditText) findViewById(R.id.iexpdate);
         bCreate = (Button) findViewById(R.id.bcreateroom);
         dbRef = FirebaseDatabase.getInstance().getReference().child(Config.DBNAME);
+
+        expDate.setFocusable(false);
+//        expDate.setEnabled(false);
+        expDate.setCursorVisible(false);
+//        expDate.setKeyListener(null);
         expDate.setOnClickListener(new View.OnClickListener() {
-            Calendar calendar;
-            DatePickerDialog dpd;
 
             @Override
             public void onClick(View view) {
+                calendarConverter = Calendar.getInstance();
                 calendar = Calendar.getInstance();
                 dpd = new DatePickerDialog(CreateRoom.this.getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         expDate.setText(i + "/" + i1 + "/" + i2);
+                        calendarConverter.set(Calendar.YEAR, i);
+                        calendarConverter.set(Calendar.MONTH,i1);
+                        calendarConverter.set(Calendar.DAY_OF_MONTH, i2);
                     }
                 }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
                 dpd.show();
@@ -61,7 +72,7 @@ public class CreateRoom extends Dialog {
         bCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChatRoomModel model = new ChatRoomModel(roomName.getText().toString(), roomDesc.getText().toString(), expDate.getText().toString(),"0");
+                ChatRoomModel model = new ChatRoomModel(roomName.getText().toString(), roomDesc.getText().toString(), calendarConverter.getTimeInMillis(),"0");
                 dbRef.push().setValue(model.toMap());
                 CreateRoom.this.dismiss();
             }

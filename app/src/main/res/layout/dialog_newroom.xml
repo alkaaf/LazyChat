@@ -54,7 +54,9 @@
             android:hint="@string/hint_room_expiration"
             android:inputType="none"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
+            android:paddingRight="10dp"
+
+            />
 
         <Button
             android:id="@+id/bcreateroom"

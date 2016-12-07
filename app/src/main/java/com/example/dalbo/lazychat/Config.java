@@ -17,7 +17,7 @@ public class Config {
     public static String getNowDate() {
         Calendar calendar = Calendar.getInstance();
         String now = calendar.get(Calendar.YEAR) + "/" + calendar.get(Calendar.MONTH) + "/" +
-                calendar.get(Calendar.DAY_OF_MONTH);
+                calendar.get(Calendar.DAY_OF_MONTH) +" " + calendar.get(Calendar.HOUR_OF_DAY) +":"+calendar.get(Calendar.MINUTE) +":"+calendar.get(Calendar.SECOND);
         return now;
     }
 

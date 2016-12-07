@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.dalbo.lazychat.Adapter.ChatroomListAdapter;
+import com.example.dalbo.lazychat.Adapter.FirebaseChatroomAdapter;
 import com.example.dalbo.lazychat.Dialog.CreateRoom;
 import com.example.dalbo.lazychat.Model.ChatRoomModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends BaseActivity {
     DatabaseReference dbRef;
     ChatroomListAdapter adapter;
+    FirebaseChatroomAdapter FBAdapter;
     RecyclerView recChatRoomList;
     Dialog dNewRoom;
 
@@ -43,14 +45,16 @@ public class MainActivity extends BaseActivity {
         dbRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String name = dataSnapshot.child("roomname").getValue().toString();
-                String desc = dataSnapshot.child("roomdesc").getValue().toString();
-                String expdate = dataSnapshot.child("expdate").getValue().toString();
-                String expired = dataSnapshot.child("expired").getValue().toString();
-                String key = dataSnapshot.getKey();
-                ChatRoomModel crm = new ChatRoomModel(name, desc, expdate, expired);
-                crm.setKey(key);
-                adapter.addNewData(crm);
+                long expdate = Long.parseLong(dataSnapshot.child("expdate").getValue().toString());
+                if(expdate > System.currentTimeMillis()) {
+                    String name = dataSnapshot.child("roomname").getValue().toString();
+                    String desc = dataSnapshot.child("roomdesc").getValue().toString();
+                    String expired = dataSnapshot.child("expired").getValue().toString();
+                    String key = dataSnapshot.getKey();
+                    ChatRoomModel crm = new ChatRoomModel(name, desc, expdate, expired);
+                    crm.setKey(key);
+                    adapter.addNewData(crm);
+                }
             }
 
             @Override
