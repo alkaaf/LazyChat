@@ -28,4 +28,9 @@
     <string name="text_room_description">Room\'s Descriptions</string>
     <string name="text_room_expiry">Room\s Expiry Date</string>
 
+    <!-- Foe and User chat bubble -->
+    <string name="text_nickname">The Name</string>
+    <string name="text_message">The messages</string>
+    <string name="text_margin">The margin</string>
+
 </resources>
