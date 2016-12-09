@@ -2,6 +2,20 @@
     <string name="app_name">LazyChat</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Login View -->
+    <string name="text_title">Login</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_pwd">Password</string>
+    <string name="text_login">Login</string>
+    <string name="text_daftar">Atau tap disini untuk daftar</string>
+
+    <!-- Register View -->
+    <string name="text_title_signup">Sign Up</string>
+    <!-- string email pakai yang ada di login view -->
+    <!-- string password pakai yang ada di login view -->
+    <string name="text_signup">Sign Up</string>
+    <string name="text_link_login">Atau tap disini untuk login</string>
+
     <!-- New Chatroom Dialog -->
     <string name="dialog_title">Create New Room</string>
     <string name="hint_nama_room">Room\'s Name</string>
@@ -13,4 +27,5 @@
     <string name="text_room_title">Room\'s Title</string>
     <string name="text_room_description">Room\'s Descriptions</string>
     <string name="text_room_expiry">Room\s Expiry Date</string>
+
 </resources>

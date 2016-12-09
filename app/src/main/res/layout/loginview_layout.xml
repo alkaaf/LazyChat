@@ -3,16 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_lazy_logo"
+        android:backgroundTint="@color/transparent"
+        android:id="@+id/title_logo"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Masuk tersebih dahulu"
+        android:layout_below="@+id/title_logo"
+        android:text="@string/text_title"
         android:textSize="30dp"
         android:textStyle="bold"
-        />
+        android:textColor="@color/colorIcons"
+        android:id="@+id/title_text_login"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,36 +31,55 @@
         android:layout_centerVertical="true">
 
         <EditText
-
             android:id="@+id/iemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:hint="Email"/>
+            android:textSize="20dp"
+            android:hint="@string/hint_email"
+            android:textColor="@color/colorIcons"
+            android:textColorHint="@color/colorIcons" />
 
         <EditText
             android:id="@+id/ipassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="15dp"
             android:layout_below="@id/iemail"
             android:ems="10"
             android:inputType="textPassword"
-            android:hint="Password"
-            />
+            android:textSize="20dp"
+            android:hint="@string/hint_pwd"
+            android:textColor="@color/colorIcons"
+            android:textColorHint="@color/colorIcons" />
 
         <Button
             android:id="@+id/blogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/ipassword"
-            android:text="Login" />
+            android:text="@string/text_login"
+            android:background="@color/colorIcons"
+            android:textColorHint="@color/colorPrimaryDark" />
+
         <TextView
             android:id="@+id/oregisterLink"
             android:layout_below="@id/blogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Atau daftar terlebih dahulu?"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="15dp"
+            android:textColor="@color/colorIcons"
+            android:text="@string/text_daftar"
             />
+
     </RelativeLayout>
+
 </RelativeLayout>
