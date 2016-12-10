@@ -34,10 +34,12 @@ public class ChatActivity extends BaseActivity {
     String roomKey, sroomTitle,sroomExpDate, sroomDesc;
     ChatListAdapter adapter;
     ActionBar actionBar;
+    public static int started;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatview_layout);
+        started = 1;
         actionBar = getSupportActionBar();
         bSend = (Button)findViewById(R.id.bkirim);
         recChatList = (RecyclerView)findViewById(R.id.recchatlist);
@@ -102,5 +104,17 @@ public class ChatActivity extends BaseActivity {
                 iMsg.requestFocus();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        started = 1;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        started = 0;
     }
 }

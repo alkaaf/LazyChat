@@ -1,6 +1,7 @@
 package com.example.dalbo.lazychat;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.view.View;
 import com.example.dalbo.lazychat.Adapter.ChatroomListAdapter;
 import com.example.dalbo.lazychat.Dialog.CreateRoom;
 import com.example.dalbo.lazychat.Model.ChatRoomModel;
+import com.example.dalbo.lazychat.Service.NotifService;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,13 +24,14 @@ public class MainActivity extends BaseActivity {
     ChatroomListAdapter adapter;
     RecyclerView recChatRoomList;
     Dialog dNewRoom;
+    public static int started;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        started = 1;
         setSupportActionBar(toolbar);
         dbRef = FirebaseDatabase.getInstance().getReference().child(Config.DBNAME);
         adapter = new ChatroomListAdapter(this);
@@ -81,6 +84,19 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        started = 1;
+    }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(NotifService.started == 0){
+            Intent intent = new Intent(this,NotifService.class);
+            startService(intent);
+        }
+        started = 0;
+    }
 }
