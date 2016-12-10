@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/omsg"
                 android:layout_toRightOf="@+id/text_margin"
+                android:layout_alignParentRight="true"
                 android:text="99/99/99"
                 android:textStyle="italic"
                 android:textAlignment="viewEnd"
