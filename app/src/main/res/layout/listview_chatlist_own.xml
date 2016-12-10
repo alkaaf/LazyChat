@@ -57,7 +57,7 @@
                 android:textAlignment="viewEnd"
                 android:textSize="8dp"
                 android:textColor="@color/colorPrimaryLight"
-                android:id="@+id/otime"/>
+                android:id="@+id/otime" />
 
         </RelativeLayout>
 

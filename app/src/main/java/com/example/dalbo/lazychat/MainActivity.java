@@ -28,6 +28,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         dbRef = FirebaseDatabase.getInstance().getReference().child(Config.DBNAME);
         adapter = new ChatroomListAdapter(this);
