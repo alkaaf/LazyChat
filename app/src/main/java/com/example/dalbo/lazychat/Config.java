@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by dalbo on 11/11/2016.
@@ -23,6 +25,10 @@ public class Config {
 
     public static void prefInit(Context c) {
         sp = PreferenceManager.getDefaultSharedPreferences(c);
+        SharedPreferences.Editor editor = sp.edit();
+        Set<String> notifList = new HashSet<>();
+        editor.putStringSet("notifList",notifList);
+        editor.apply();
     }
 
     public static String getNick() {
@@ -52,5 +58,16 @@ public class Config {
     }
     public static String getEmail(){
         return sp.getString("email",null);
+    }
+
+    public static void addNotifList(String roomKey){
+        sp.getStringSet("notifList",null).add(roomKey);
+    }
+
+    public static Set<String> getNotifList(){
+        return sp.getStringSet("notifList",null);
+    }
+    public static void removeNotifList(String roomKey){
+        sp.getStringSet("notifList",null).remove(roomKey);
     }
 }

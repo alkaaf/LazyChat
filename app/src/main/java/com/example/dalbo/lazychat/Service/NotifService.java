@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.example.dalbo.lazychat.ChatActivity;
+import com.example.dalbo.lazychat.Config;
 import com.example.dalbo.lazychat.MainActivity;
 import com.example.dalbo.lazychat.R;
 import com.google.firebase.database.ChildEventListener;
@@ -19,10 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
-import static android.R.attr.key;
 
 /**
  * Created by dalbo on 12/10/2016.
@@ -30,9 +27,9 @@ import static android.R.attr.key;
 
 public class NotifService extends Service {
     public static int started = 0;
-    DatabaseReference dbRef;
-    NotificationManager manager;
-    Notification notif;
+    static DatabaseReference dbRef;
+    static NotificationManager manager;
+    static ChildEventListener childEventListener;
 
     @Override
     public void onCreate() {
@@ -41,11 +38,12 @@ public class NotifService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-//        return super.onStartCommand(intent, flags, startId);
+        Config.prefInit(this);
         started = 1;
         manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         dbRef = FirebaseDatabase.getInstance().getReference();
-        dbRef.addChildEventListener(new ChildEventListener() {
+
+        childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
@@ -53,22 +51,22 @@ public class NotifService extends Service {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                DataSnapshot ds = dataSnapshot;
-                if (MainActivity.started == 0 && ChatActivity.started == 0) {
+                HashMap<String, Object> map = (HashMap<String,Object>)dataSnapshot.getValue();
+                if (ChatActivity.started == 0) {
+                    Notification notif;
                     Intent chatIntent = new Intent(NotifService.this, MainActivity.class);
-                    PendingIntent pendingIntent = PendingIntent.getActivity(NotifService.this,0,chatIntent,0);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(NotifService.this, 0, chatIntent, 0);
                     notif = new Notification.Builder(NotifService.this)
                             .setContentTitle("New message")
                             .setContentText("Click to open app!")
                             .setSmallIcon(R.drawable.lazy_logo)
                             .setContentIntent(pendingIntent)
-                            .setVibrate(new long[]{1000,1000})
+                            .setVibrate(new long[]{1000, 1000})
                             .build();
                     notif.flags = Notification.FLAG_AUTO_CANCEL;
                     manager.notify(1, notif);
                 }
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
@@ -83,14 +81,14 @@ public class NotifService extends Service {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+        dbRef.addChildEventListener(childEventListener);
         return START_STICKY;
     }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-
         return null;
     }
 

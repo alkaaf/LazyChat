@@ -58,43 +58,4 @@ public class BaseActivity extends AppCompatActivity {
             auth.removeAuthStateListener(authListener);
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        searchView = (SearchView)menu.findItem(R.id.menu_search).getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                Toast.makeText(c,s,Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }
-        });
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(c, SettingActivity.class));
-        } else if (id == R.id.logout){
-            FirebaseAuth.getInstance().signOut();
-//            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 }
